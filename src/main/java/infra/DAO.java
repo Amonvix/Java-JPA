@@ -60,7 +60,7 @@ public class DAO<E> {
 			throw new UnsupportedOperationException("Classe nula.");
 			}
 		
-		String jpql = "select e from " + classe.getName() +"u";
+		String jpql = "select e from " + classe.getName() + " e";
 		TypedQuery<E> query = em.createQuery(jpql, classe);
 		query.setMaxResults(limite);
 		query.setFirstResult(deslocamento);
@@ -70,6 +70,10 @@ public class DAO<E> {
 	
 	public void fechar() {
 		em.close();
+	}
+	
+	public E obterPorId(Object id) {
+		return em.find(classe, id);
 	}
 }
 
