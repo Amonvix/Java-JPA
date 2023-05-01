@@ -87,5 +87,11 @@ public class DAO<E> {
 	public E obterPorId(Object id) {
 		return em.find(classe, id);
 	}
+	
+	public E consultarum(String nomeConsulta,Object...params){
+		List<E> lista= consultar(nomeConsulta, params);
+		return lista.isEmpty() ? null : lista.get(0);
+	
+	}
 }
 
